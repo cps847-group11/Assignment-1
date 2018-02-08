@@ -107,23 +107,26 @@ def get_weather(city):
 
     _id = ""
 
-    for i in weather_data:
-        if (i['name']).lower() == city.lower():
-            pprint(_id)
-            _id = i['id']    
+    #for i in weather_data:
+    #    if (i['name']).lower() == city.lower():
+    #        pprint(_id)
+    #        _id = i['id']    
 
     pprint(_id)
 
-    url = 'http://api.openweathermap.org/data/2.5/weather?id=' + str(_id) + '&APPID=' + weather_key + '&units=metric'
+    url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + weather_key + '&units=metric'
+    #url = 'http://api.openweathermap.org/data/2.5/weather?id=' + str(_id) + '&APPID=' + weather_key + '&units=metric'
     #url = 'http://api.openweathermap.org/data/2.5/forecast/city?id=' + _id + '&APPID=' + weather_key   # full url
+
 
     r = requests.get(url)
     #pprint(r.json()['main']['temp_max'])
 
-    #pprint(r.json())
+    #pprint(r.json()['message'])
 
 
-    return("The temperature in " + city + " is " + (str)(r.json()['main']['temp_max']))
+
+    return("The temperature in " + city + " is " + (str)(r.json()['main']['temp_max']) + " degrees celsius.")
 
 
 if __name__ == "__main__":
