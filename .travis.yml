@@ -1,0 +1,17 @@
+language: python
+
+#which versions of python to test against
+python:
+  - "2.7"
+  - "3.3"
+
+# command to install dependencies
+install:
+#  - pip install ./lecture7/
+#  - pip install -r ./lecture7/requirements.txt
+
+script: 
+  - python -m unittest discover -v ./ci_play/ # command to run unit test
+
+#can do additional things, say send out reports, which we will discuss next time
+after_success:
